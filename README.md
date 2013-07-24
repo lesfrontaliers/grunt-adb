@@ -35,7 +35,7 @@ The path to the `.apk` file to install
 #### launch
 The component to lauch.
 
-You can optionnaly specify a particular `action` (Itent) to use.
+You can optionnaly specify a particular `action` (Intent) to use.
 
 
 ### Usage Example
