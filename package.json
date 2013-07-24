@@ -1,6 +1,6 @@
 {
   "name": "grunt-adb",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Launch ADB commands from Grunt",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "grunt"
   ],
   "author": "Vincent Lark",
-  "license": "BSD",
+  "license": "MIT",
   "readmeFilename": "README.md",
   "gitHead": "763748dbf561ba813042ef83bf986bd7fd06db55"
 }
