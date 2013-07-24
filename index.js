@@ -18,10 +18,10 @@ module.exports = function(grunt) {
 		var done = this.async();
 
 		// handle device option, or select the only USB conected device
-		if (this.data.device) {
-			this.data.device = ' -s ' + this.data.device;
-		} else {
+		if (typeof this.data.device === 'undefined') {
 			this.data.device = ' -d ';
+		} else {
+			this.data.device = ' -s ' + this.data.device;
 		}
 
 		// handle debug option, or set by default
@@ -41,11 +41,7 @@ module.exports = function(grunt) {
 
 		// INSTALL
 		if (this.data.install) {
-			if (!this.data.apk) {
-				grunt.log.writeln('ADB: '.red + 'install'.cyan + ' needs an '.red + 'apk'.cyan + ' attribute.'.red);
-			}
-
-			run('adb ' + device + ' -r ' + this.data.apk, function(){
+			run('adb ' + device + ' -r ' + this.data.install, function(){
 				done();
 			});
 		}
