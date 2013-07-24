@@ -1,6 +1,6 @@
 /*
  * Task: adb
- * Description: Bump the BuildVersion in plist file
+ * Description: Launch ADB commands from Grunt
  * Dependencies: child_process
  */
 
@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 
 	var run = function(command, callback) {
 		terminal(command, function(error, stdout, stderr) {
-			var message = (command + error ? ' KO' : ' OK')[error ? 'red' : 'green'];
+			var message = command + (error ? ' KO' : ' OK')[error ? 'red' : 'green'];
 			grunt.log.writeln(message);
 		});
 	}
@@ -25,6 +25,13 @@ module.exports = function(grunt) {
 		}
 
 		// handle debug option, or set by default
+		if (typeof this.data.debug === 'undefined' || this.data.debug) {
+			this.data.debug = ' -D ';
+		} else {
+			this.data.debug = ' ';
+		}
+
+		// handle wait option, or set by default
 		if (typeof this.data.wait === 'undefined' || this.data.wait) {
 			this.data.wait = ' -W ';
 		} else {
@@ -41,20 +48,14 @@ module.exports = function(grunt) {
 
 		// INSTALL
 		if (this.data.install) {
-			run('adb ' + device + ' -r ' + this.data.install, function(){
+			run('adb ' + this.data.device + ' install -r ' + this.data.install, function(){
 				done();
 			});
 		}
 
 		// AM START aka LAUNCH
 		if (this.data.launch) {
-			if (!this.data.component) {
-				grunt.log.writeln('ADB: '.red + 'launch'.cyan + ' needs a '.red + 'component'.cyan + ' attribute.'.red);
-			} else {
-				this.data.component = ' -n ' + this.data.component;
-			}
-
-			run('adb ' + device + ' shell am start ' + this.data.action + this.data.component, function(){
+			run('adb ' + this.data.device + ' shell am start ' + this.data.wait  + this.data.debug + this.data.action + ' -n ' + this.data.launch, function(){
 				done();
 			});
 		}
