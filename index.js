@@ -1,5 +1,3 @@
-adb -d install -r android/bin/LesFrontaliers.apk && adb -d shell am start -D -a android.intent.action.MAIN -n org.mediawebeditions.LesFrontaliersApp/.LesFrontaliers
-
 /*
  * Task: adb
  * Description: Bump the BuildVersion in plist file
