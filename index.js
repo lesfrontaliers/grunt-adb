@@ -48,7 +48,7 @@ module.exports = function(grunt) {
 
         // UNINSTALL
         if (this.data.uninstall) {
-            run('adb ' + this.data.device + ' uninstall ' + this.data.install, function(){
+            run('adb ' + this.data.device + ' uninstall ' + this.data.uninstall, function(){
                 done();
             });
         }
