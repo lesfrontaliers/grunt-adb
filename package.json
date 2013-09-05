@@ -1,6 +1,6 @@
 {
   "name": "grunt-adb",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Launch ADB commands from Grunt",
   "main": "index.js",
   "scripts": {
