@@ -2,7 +2,7 @@
   "name": "grunt-adb",
   "version": "0.1.1",
   "description": "Launch ADB commands from Grunt",
-  "main": "index.js",
+  "main": "tasks/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
