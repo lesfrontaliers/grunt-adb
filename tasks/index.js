@@ -11,6 +11,7 @@ module.exports = function(grunt) {
         terminal(command, function(error, stdout, stderr) {
             var message = command + (error ? ' KO' : ' OK')[error ? 'red' : 'green'];
             grunt.log.writeln(message);
+            callback(error);
         });
     }
 
@@ -48,22 +49,22 @@ module.exports = function(grunt) {
 
         // UNINSTALL
         if (this.data.uninstall) {
-            run('adb ' + this.data.device + ' uninstall ' + this.data.uninstall, function(){
-                done();
+            run('adb ' + this.data.device + ' uninstall ' + this.data.uninstall, function(error){
+                done(error);
             });
         }
 
         // INSTALL
         if (this.data.install) {
-            run('adb ' + this.data.device + ' install -r ' + this.data.install, function(){
-                done();
+            run('adb ' + this.data.device + ' install -r ' + this.data.install, function(error){
+                done(error);
             });
         }
 
         // AM START aka LAUNCH
         if (this.data.launch) {
-            run('adb ' + this.data.device + ' shell am start ' + this.data.wait  + this.data.debug + this.data.action + ' -n ' + this.data.launch, function(){
-                done();
+            run('adb ' + this.data.device + ' shell am start ' + this.data.wait  + this.data.debug + this.data.action + ' -n ' + this.data.launch, function(error){
+                done(error);
             });
         }
     });
