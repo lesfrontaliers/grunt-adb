@@ -18,8 +18,10 @@ module.exports = function(grunt) {
     grunt.registerMultiTask('adb', 'Launch ADB commands from Grunt', function() {
         var done = this.async();
 
-        // handle device option, or select the only USB conected device
-        if (typeof this.data.device === 'undefined') {
+        // handle emulator / device option, or select the only USB conected device
+        if (typeof this.data.emulator !== 'undefined') {
+            this.data.device = ' -e ';
+        } else if (typeof this.data.device === 'undefined') {
             this.data.device = ' -d ';
         } else {
             this.data.device = ' -s ' + this.data.device;

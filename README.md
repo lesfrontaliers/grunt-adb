@@ -27,7 +27,7 @@ Task targets, files and options may be specified according to the grunt [Configu
 
 ### Available commands & options
 
-The options `wait`, `debug`, and `device` are defined for all commands.
+The options `wait`, `debug`, `emulator`, and `device` are defined for all commands.
 
 #### install
 The path to the `.apk` file to install 
