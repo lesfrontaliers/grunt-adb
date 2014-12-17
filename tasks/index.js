@@ -48,6 +48,13 @@ module.exports = function(grunt) {
             this.data.action = ' -a ' + this.data.action;
         }
 
+        // handle activity option
+        if(!this.data.activity) {
+            this.data.activity = ''
+        } else {
+            this.data.activity = '/' + this.data.activity;
+        }
+
 
         // UNINSTALL
         if (this.data.uninstall) {
@@ -65,7 +72,7 @@ module.exports = function(grunt) {
 
         // AM START aka LAUNCH
         if (this.data.launch) {
-            run('adb ' + this.data.device + ' shell am start ' + this.data.wait  + this.data.debug + this.data.action + ' -n ' + this.data.launch, function(error){
+            run('adb ' + this.data.device + ' shell am start ' + this.data.wait  + this.data.debug + this.data.action + ' ' + this.data.launch + this.data.activity, function(error){
                 done(error);
             });
         }
